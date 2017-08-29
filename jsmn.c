@@ -319,7 +319,7 @@ void jsmn_init(jsmn_parser *parser) {
 }
 
 // ********** Nytec addition **********
- uint8_t retrievJsonScriptValue(char * js, jsmntok_t *t, int tokenCount, char * key, 
+ uint8_t retrievJsonScriptValue(const char * js, jsmntok_t *t, int tokenCount, char * key, 
                             int tokenType, void * retValue)
 {
     char tmpString[MAX_STRING_LENGTH];

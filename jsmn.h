@@ -1,6 +1,3 @@
-// Some further changes
-// Branch changes
-
 #ifndef __JSMN_H_
 #define __JSMN_H_
 
@@ -84,7 +81,7 @@ int jsmn_parse(jsmn_parser *parser, const char *js, size_t len,
 		jsmntok_t *tokens, unsigned int num_tokens);
         
 // ********** Nytec addition **********
-uint8_t retrievJsonScriptValue(char * js, jsmntok_t *t, int tokenCount, char * key, 
+uint8_t retrievJsonScriptValue(const char * js, jsmntok_t *t, int tokenCount, char * key, 
                            int tokenType, void * retValue);
 // ********** end Nytec addition **********
 

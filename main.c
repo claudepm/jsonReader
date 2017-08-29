@@ -47,6 +47,16 @@ static const char *jsonStr3 =
   }\
 }";
 
+static const char *jsonStr4 =
+"&*%$#{\
+  \"type\": \"CREDENTIAL_WRITE\",\
+  \"content\": {\
+    \"credentialId\": \"11223344556677\",\
+    \"data\": Tnl0ZWMgZG9lc24ndCBuZWVkIHRvIHBhcnNlIHRoaXMsIG9ubHkgZm9yd2FyZC4u,\
+  }\
+}";
+
+
 
 void clearTokenList(jsmntok_t *t, int32_t tCount)
 {
@@ -130,6 +140,23 @@ int main(int argc, char **argv)
         
     if(retrievJsonScriptValue(jsonStr3+MESSAGE_HEADER, t, tokenCount, "content", JS_STRING, (void *) tmpStr))
         LOG_PRINT("%s : %s\n", "content", tmpStr); 
+        
+    
+    printf("\n");
+    LOG_PRINT("***** Testing jsonStr4 *****\n");
+    jsmn_init(&p);
+    tokenCount = jsmn_parse(&p,jsonStr4+MESSAGE_HEADER , sizeof(jsonStr4)-MESSAGE_HEADER, t, TOKEN_LIST_LEN);  
+    if(retrievJsonScriptValue(jsonStr4+MESSAGE_HEADER, t, tokenCount, "type", JS_STRING, (void *) tmpStr))
+        LOG_PRINT("%s : %s\n", "type", tmpStr); 
+        
+    if(retrievJsonScriptValue(jsonStr4+MESSAGE_HEADER, t, tokenCount, "type", JS_STRING, (void *) tmpStr))
+        LOG_PRINT("%s : %s\n", "type", tmpStr); 
+    
+    if(retrievJsonScriptValue(jsonStr4+MESSAGE_HEADER, t, tokenCount, "credentialId", JS_STRING, (void *) tmpStr))
+        LOG_PRINT("%s : %s\n", "credentialId", tmpStr); 
+    
+    if(retrievJsonScriptValue(jsonStr4+MESSAGE_HEADER, t, tokenCount, "data", JS_STRING, (void *) tmpStr))
+        LOG_PRINT("%s : %s\n", "data", tmpStr); 
         
 	return 0;
 }
