@@ -1,6 +1,3 @@
-// branch testB1
-// branch testB2
-
 #include <stdio.h>
 #include <stdint.h>
 #include "jsmn.h"
